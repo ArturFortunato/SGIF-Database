@@ -10,8 +10,8 @@ create table Camara (
 
 # Video(dataHoraInicio, dataHoraFim, numCamara)
 create table Video (
-    dataHoraInicio datetime not null,
-    dataHoraFim datetime not null,
+    dataHoraInicio timestamp not null,
+    dataHoraFim timestamp not null,
     numCamara int not null unsigned,
     constraint pk_video primary key (dataHoraInicio),
     constraint fk_camara foreign key (numCamara) references Camara(numCamara),
@@ -22,7 +22,7 @@ create table Video (
 create table SegmentoVideo (
     numSegmento int not null unsigned,
     duracao time not null,
-    dataHoraInicio datetime not null,
+    dataHoraInicio timestamp not null,
     numCamara int not null unsigned,
     constraint pk_segment primary key (numSegmento),
     constraint fk_camara foreign key (numCamara) references Camara(numCamara),
@@ -46,7 +46,7 @@ create table Vigia (
 # EventoEmergencia(numTelefone, instanceChamada, nomePessoa, moradaLocal, numProcessoSocorro)
 create table EventoEmergencia (
 	numTelefone char(9) not null unique,
-	instanteChamada datetime not null unique,
+	instanteChamada timestamp not null unique,
 	nomePessoa varchar(30) not null,
 	moradaLocal varchar(255) not null,
 	numProcessoSocorro int unique unsigned,
@@ -146,25 +146,25 @@ create table Audita(
 	numMeio int not null unique unsigned,
 	nomeEntidade varchar(20) not null unique,
 	numProcessoSocorro int unique unsigned,
-	datahoraInicio datetime not null,
-	datahoraFim datetime not null,
-	dataAuditoria date not null,
+	datahoraInicio timestamp not null,
+	datahoraFim timestamp not null,
+	dataAuditoria timestamp not null,
 	texto text not null,
 	constraint fk_numMeio foreign key (numMeio) references Aciona(numMeio),
 	constraint fk_nomeEntidade foreign key (nomeEntidade) references Aciona(nomeEntidade),
 	constraint fk_numProcessoSocorro foreign key (numProcessoSocorro) references Aciona(numProcessoSocorro),
 	constraint fk_idCoordenador foreign key (idCoordenador) references Coordenador(idCoordenador),
 	constraint chk_audit_time check (datahoraInicio < datahoraFim),
-	constraint chk_audit_date check (dataAuditoria >= current_date) #verificar
+	constraint chk_audit_date check (dataAuditoria >= current_timestamp) #verificar
 );
 
 # Solicita(idCoordenador, dataHoraInicioVideo, numCamara, dataHoraInicio, dataHoraFim)
 create table Solicita(
 	idCoordenador int not null unique unsigned,
-	dataHoraInicioVideo datetime not null,
+	dataHoraInicioVideo timestamp not null,
 	numCamara int not null unique unsigned,
-	dataHoraInicio datetime not null,
-	dataHoraFim datetime not null,
+	dataHoraInicio timestamp not null,
+	dataHoraFim timestamp not null,
 	constraint fk_idCoordenador foreign key (idCoordenador) references Coordenador(idCoordenador),
 	constraint fk_dataHoraInicioVideo foreign key (dataHoraInicioVideo) references Video(dataHoraInicio),
 	constraint fk_numCamara foreign key (numCamara) references Camara(numCamara)
