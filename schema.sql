@@ -8,8 +8,8 @@ create table Camara (
 );
 
 create table Video (
-    dataHoraInicio timestamp not null,
-    dataHoraFim timestamp not null,
+    dataHoraInicio datetime not null,
+    dataHoraFim datetime not null,
     numCamara int not null unsigned,
     constraint pk_video primary key (dataHoraInicio),
     constraint fk_camara foreign key (numCamara) references Camara(numCamara),
@@ -19,7 +19,7 @@ create table Video (
 create table SegmentoVideo (
     numSegmento int not null unsigned,
     duracao time not null,
-    dataHoraInicio timestamp not null,
+    dataHoraInicio datetime not null,
     numCamara int not null unsigned,
     constraint pk_segment primary key (numSegmento),
     constraint fk_camara foreign key (numCamara) references Camara(numCamara),
@@ -40,7 +40,7 @@ create table Vigia (
 
 create table EventoEmergencia (
 	numTelefone char(9) not null unique,
-	instanteChamada timestamp not null unique,
+	instanteChamada datetime not null unique,
 	nomePessoa varchar(30) not null,
 	moradaLocal varchar(255) not null,
 	numProcessoSocorro int unique unsigned,
@@ -129,8 +129,8 @@ create table Audita(
 	numMeio int not null unique unsigned,
 	nomeEntidade varchar(20) not null unique,
 	numProcessoSocorro int unique unsigned,
-	datahoraInicio timestamp not null,
-	datahoraFim timestamp not null,
+	datahoraInicio datetime not null,
+	datahoraFim datetime not null,
 	dataAuditoria date not null,
 	texto text not null,
 	constraint numMeio foreign key (numMeio) references Aciona(numMeio),
@@ -143,10 +143,10 @@ create table Audita(
 
 create table Solicita(
 	idCoordenador int not null unique unsigned,
-	dataHoraInicioVideo timestamp not null,
+	dataHoraInicioVideo datetime not null,
 	numCamara int not null unique unsigned,
-	dataHoraInicio timestamp not null,
-	dataHoraFim timestamp not null,
+	dataHoraInicio datetime not null,
+	dataHoraFim datetime not null,
 	constraint idCoordenador foreign key (idCoordenador) references Coordenador(idCoordenador),
 	constraint dataHoraInicioVideo foreign key (dataHoraInicioVideo) references Video(dataHoraInicio),
 	constraint numCamara foreign key (numCamara) references Camara(numCamara)
