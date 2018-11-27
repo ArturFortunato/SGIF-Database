@@ -183,9 +183,9 @@ for i in range(100):
     endTime = str(randint(0, 23)).zfill(2) + ":" + str(randint(0, 59)).zfill(2)
     auditTime = str(randint(0, 23)).zfill(2) + ":" + str(randint(0, 59)).zfill(2)
 
-    startDate = datetime.date(randint(2000, 2018), randint(1, 12), randint(1,28))
+    startDate = datetime.date(randint(2000, 2017), randint(1, 12), randint(1,28))
     endDate = startDate + datetime.timedelta(randint(1,365))
-    auditDate = datetime.date(randint(2018, 2022), randint(1, 12), randint(1,28))
+    auditDate = endDate + datetime.timedelta(randint(1,2))
 
     startStamp = str(startDate) + " " + str(startTime)
     endStamp = str(endDate) + " " + str(endTime)

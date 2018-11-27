@@ -152,8 +152,8 @@ create table Audita
 	texto text not null,
 	constraint numMeio foreign key (numMeio, nomeEntidade, numProcessoSocorro) references Aciona(numMeio, nomeEntidade, numProcessoSocorro),
 	constraint idCoordenador foreign key (idCoordenador) references Coordenador(idCoordenador),
-	constraint chk_audit_time check (datahoraInicio < datahoraFim)--,
-	--constraint chk_audit_date check (dataAuditoria >= current_date) /*VERIFICAR*/
+	constraint chk_audit_time check (datahoraInicio < datahoraFim),
+	constraint chk_audit_date check (dataAuditoria <= current_date) /*VERIFICAR*/
 );
 
 create table Solicita

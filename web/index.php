@@ -18,7 +18,16 @@
 	
 	$num = pg_num_rows($result);
 
-	echo("<p>$num records retrieved:</p>");
+    echo("<p>$num records retrieved:</p>");
+    echo("<table>");
+    echo("<tr><td>numCamara</td></tr>");
+    while ($row = pg_fetch_assoc($result))
+	{
+        echo("<tr><td>");
+		echo($row["numcamara"]);
+		echo("</td></tr>");
+    }
+    echo("</table>");
     /*
 	echo('<table border="5">');
 	echo("<tr><td>account_number</td><td>branch_name</td><td>balance</td></tr>");
