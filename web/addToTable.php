@@ -9,10 +9,12 @@
 
     $connection = pg_connect("host=$host port=$port user=$user password=$password dbname=$bdname") or die(pg_last_error());
 
-    //if($REQUEST['add'])
+    echo($_REQUEST['nome']);
+    //echo($_REQUEST['table']);
     echo("<p>Caralho!</p>");
-
     $pg_close($connection);
+
+    //header('Location: index.php'); --> volta à pagina original
 ?>
 </body>
 </html>
