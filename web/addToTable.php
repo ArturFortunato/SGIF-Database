@@ -7,14 +7,15 @@
 	$password="12345678";
     $dbname = $user;
 
-    $connection = pg_connect("host=$host port=$port user=$user password=$password dbname=$bdname") or die(pg_last_error());
+    $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo($_REQUEST['nome']);
-    //echo($_REQUEST['table']);
-    echo("<p>Caralho!</p>");
-    $pg_close($connection);
+    $sql = "INSERT INTO locais VALUES (:moradalocal);";
 
-    //header('Location: index.php'); --> volta à pagina original
+    $result = $db->prepare($sql);
+    $result->execute([':moradalocal' => $_REQUEST['nome']]);
+
+    $db = null;
 ?>
 </body>
 </html>

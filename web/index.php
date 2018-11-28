@@ -56,7 +56,8 @@
             echo("</tr>");
         }
         if($show_add) {
-            echo("<form action=\"addToTable.php?table={$table}\">");
+            echo("<form action=\"addToTable.php\">");
+            echo("<input type=\"hidden\" name=\"table\" value=\"$table\">");
             echo("<p>Novo <span name=\"table\">$table: </span><input type=\"text\" name=\"nome\">\t");
             echo("<input type=\"submit\" value=\"Adicionar\"/></p>");
             echo("</form>");
