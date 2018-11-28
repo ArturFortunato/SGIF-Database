@@ -46,13 +46,17 @@
 
         while ($row = pg_fetch_assoc($result)) {
             echo("<tr>");
-            for($j = 0; $j < $i; $j++)
-            {
+            $ar = "";
+            for($j = 0; $j < $i; $j++) {
                 echo("<td>");
                 echo($row[pg_field_name($result, $j)]);
                 echo("</td>");
             }
-            echo("<td><a href=\"deleteFromTable.php\">Apagar</a></td>");
+            for($k = 0; $k < $i; $k++) {
+                $ar .= pg_field_name($result, $k) . "=" . $row[pg_field_name($result, $k)] . "::";
+            }
+            
+            echo("<td><a href=\"deleteFromTable.php?row={$ar}&table=$table\">Apagar</a></td>");
             echo("</tr>");
         }
         if($show_add) {
