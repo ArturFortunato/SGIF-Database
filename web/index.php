@@ -22,11 +22,11 @@
     echo("<p>------------------------------Entidade Meio------------------------------</p>");
     printTable("entidademeio", true, false);
     echo("<p>------------------------------Meios de combate------------------------------</p>");
-    printTable("meiocombate", false, true);
+    printTable("meiocombate", true, true);
     echo("<p>------------------------------Meio Apoio------------------------------</p>");
-    printTable("meioapoio", false, true);
+    printTable("meioapoio", true, true);
     echo("<p>------------------------------Meio Socorro------------------------------</p>");
-    printTable("meiosocorro",false, true);
+    printTable("meiosocorro",true, true);
 
     $pg_close($connection);
 
@@ -60,15 +60,133 @@
             echo("</tr>");
         }
         if($show_add) {
-            echo("<form action=\"addToTable.php\">");
-            echo("<input type=\"hidden\" name=\"table\" value=\"$table\">");
-            echo("<p>Novo <span name=\"table\">$table: </span><input type=\"text\" name=\"nome\">\t");
-            echo("<input type=\"submit\" value=\"Adicionar\"/></p>");
-            echo("</form>");
+            echo(getForm($table));
         }
         echo("</table>");
     
         $result = pg_free_result($result) or die('ERROR: ' . pg_last_error());
+    }
+
+    function getForm($table) {
+        if ($table == 'locais') {
+            return "<form action=\"addToLocaisTable.php\">
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+                        <p>Novo local:
+                            <input type=\"text\" name=\"nome\">\t
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";
+        }
+        else if ($table == 'eventoemergencia') {
+            return "<form action=\"addToEventoEmergenciaTable.php\">
+                        <p>Novo Evento emergencia</p>
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+
+                        <p>Telefone
+                            <input type=\"text\" name=\"numtelefone\">\t
+                        </p>
+                        <p>Instante do inicio da chamada
+                            <input type=\"text\" name=\"instantechamada\">\t
+                        </p>
+                        <p>Nome da pessoa
+                            <input type=\"text\" name=\"nomepessoa\">\t
+                        </p>
+                        <p>Morada
+                            <input type=\"text\" name=\"moradalocal\">\t
+                        </p>
+                        <p>Processo socorro
+                            <input type=\"text\" name=\"numprocessosocorro\">\t
+                        </p>
+                        <p>
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";
+        }
+        else if ($table == 'processosocorro') {
+            return "<form action=\"addToProcessoSocorroTable.php\">
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+                        <p>Novo Processo de Socorro:
+                            <input type=\"text\" name=\"numprocessosocorro\">\t
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";
+        }
+        else if ($table == 'meio') {
+            return "<form action=\"addToMeioTable.php\">
+                        <p>Novo Meio</p>
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+
+                        <p>Numero do meio
+                            <input type=\"text\" name=\"nummeio\">\t
+                        </p>
+                        <p>Nome do meio
+                            <input type=\"text\" name=\"nomemeio\">\t
+                        </p>
+                        <p>Nome da entidade
+                            <input type=\"text\" name=\"nomeentidade\">\t
+                        </p>
+                        <p>
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";
+        }
+        else if ($table == 'entidademeio') {
+            return "<form action=\"addToEntidadeTable.php\">
+                        <p>Novo Meio</p>
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+                        <p>Nome da entidade
+                            <input type=\"text\" name=\"nomeentidade\">\t
+                        </p>
+                        <p>
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";        
+        }
+        else if ($table == 'meiocombate') {
+            return "<form action=\"addToVariosMeiosTable.php\">
+                        <p>Novo Meio de combate</p>
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+                        <p>Numero do meio
+                            <input type=\"text\" name=\"nummeio\">\t
+                        </p>
+                        <p>Nome da entidade
+                            <input type=\"text\" name=\"nomeentidade\">\t
+                        </p>
+                        <p>
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";        
+        }
+        else if ($table == 'meioapoio') {
+            return "<form action=\"addToVariosMeiosTable.php\">
+                        <p>Novo Meio de combate</p>
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+                        <p>Numero do meio
+                            <input type=\"text\" name=\"nummeio\">\t
+                        </p>
+                        <p>Nome da entidade
+                            <input type=\"text\" name=\"nomeentidade\">\t
+                        </p>
+                        <p>
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";               
+        }
+        else if ($table == 'meiosocorro') {
+            return "<form action=\"addToVariosMeiosTable.php\">
+                        <p>Novo Meio de combate</p>
+                        <input type=\"hidden\" name=\"table\" value=\"$table\">
+                        <p>Numero do meio
+                            <input type=\"text\" name=\"nummeio\">\t
+                        </p>
+                        <p>Nome da entidade
+                            <input type=\"text\" name=\"nomeentidade\">\t
+                        </p>
+                        <p>
+                            <input type=\"submit\" value=\"Adicionar\"/>
+                        </p>
+                    </form>";              
+        }
     }
 ?>
 </body>
