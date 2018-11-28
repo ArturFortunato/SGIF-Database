@@ -16,6 +16,9 @@
     $result->execute([':moradalocal' => $_REQUEST['nome']]);
 
     $db = null;
+
+    header('Location: index.php');
+    die();
 ?>
 </body>
 </html>
