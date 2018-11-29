@@ -1,19 +1,22 @@
-<?php
+<html>
+    <body>
+        <?php
 
-$tablename;  //Receive table name
-$arguments;  //Receive arguments to update (Array)
-$primary;    //Receive primary keys to identify the row
+        include("config.php");
 
-$sql_op = "UPDATE " . $tablename . " SET nummeio = " . $arguments[0] . " , nomeentidade = " . $arguments[1] .
-          "WHERE nummeio = " . $primary[0] . " AND nomeentidade = " . $primary[1] . ";";
+        echo("<form action=\"index.php\"><input type=\"submit\" value=\"Voltar\"></form>");
+        
+        $sql = "UPDATE " . $_REQUEST['table'] . " SET nummeio=" . $_REQUEST['novonummeio'] . ", nomeentidade='" . $_REQUEST['novonomeentidade'] . "' WHERE nummeio =" . $_REQUEST['nummeio'] . " AND nomeentidade='" . $_REQUEST['nomeentidade'] . "';";
+        echo($sql);
+        try {
+            $result = $db->prepare($sql);
+            $result->execute();
+            echo("<h1>Alteracao efetuada!</h1>");
+        }
+        catch (Exception $e) {
+            echo("<h1>$e</h1>");
+        }
 
-$result = pg_query($sql_op) or die(pg_last_error());
-
-
-/*    Sintaxe a seguir
-
-UPDATE $tablename
-SET nummeio = "$arguments[0]", nomeentidade = "$arguments[1]"
-WHERE nummeio = "$primary[0]" AND nomeentidade = "$primary[1]";*/
-
-?>
+        ?>
+    </body> 
+</html>
