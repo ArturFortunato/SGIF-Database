@@ -41,7 +41,7 @@ create table SegmentoVideo
     dataHoraInicio timestamp not null,
     numCamara int not null ,
     constraint pk_segment primary key (numCamara, numSegmento, dataHoraInicio),
-    constraint fk_camara foreign key (numCamara) references Camara(numCamara),
+    constraint fk_camara foreign key (numCamara) references Video(numCamara),
     constraint fk_dataHoraInicio foreign key (dataHoraInicio) references Video(dataHoraInicio)
 );
 
