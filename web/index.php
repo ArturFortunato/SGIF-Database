@@ -61,6 +61,9 @@
             }
             
             echo("<td><a href=\"deleteFromTable.php?row={$ar}&table=$table\">Apagar</a></td>");
+            if($show_edit) {
+                echo("<td><a href=\"editTableRow.php\">Editar</a></td>");
+            }
             echo("</tr>");
         }
         if($show_add) {
