@@ -14,7 +14,9 @@
     echo("<p>------------------------------Socorros nos Local N------------------------------</p>");
     echo(getForm("listSocorroEmLocalN")); 
     echo("<p>------------------------------Meios acionados no processo N------------------------------</p>");  
-    echo(getForm("listMeiosAcionadosNoProcessoN"));      
+    echo(getForm("listMeiosAcionadosNoProcessoN"));   
+    echo("<p>------------------------------Associar processo de socorro a meios------------------------------</p>"); 
+    echo(getForm("associarProcSocorroAMeios"));   
     echo("<p>------------------------------Locais------------------------------</p>");
     printTable("locais", true, false);
     echo("<p>-------------------------------Evento Emergencia------------------------------</p>");
@@ -206,7 +208,17 @@
             return  "<form action=\"listMeiosAcionadosNoProcesso.php\">
                         <p>Listar os Meios acionados no processo
                         <input type=\"text\" name=\"numprocessosocorro\">\t
-                            <input type=\"submit\" value=\"Listar\"/>
+                        <input type=\"submit\" value=\"Listar\"/>
+                        </p>
+                    </form>";
+        }
+        else if($table == "associarProcSocorroAMeios") {
+            return  "<form action=\"assocProcessosSocorroAMeios.php\">
+                        <p>Associar processo de socorro a meios</p>
+                        <p>Numero do processo de socorro: <input type=\"text\" name=\"numprocessosocorro\"></p>
+                        <p>Numero do meio: <input type=\"text\" name=\"nummeio\"></p>
+                        <p>Nome da entidade: <input type=\"text\" name=\"nomeentidade\"></p>
+                        <p><input type=\"submit\" value=\"Listar\"/></p>
                         </p>
                     </form>";
         }
