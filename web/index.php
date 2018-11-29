@@ -11,6 +11,10 @@
 	
 	echo("<p>Connected to Postgres on $host as user $user on database $dbname.</p>");
     
+    echo("<p>------------------------------Socorros nos Local N------------------------------</p>");
+    echo(getForm("listSocorroEmLocalN")); 
+    echo("<p>------------------------------Meios acionados no processo N------------------------------</p>");  
+    echo(getForm("listMeiosAcionadosNoProcessoN"));      
     echo("<p>------------------------------Locais------------------------------</p>");
     printTable("locais", true, false);
     echo("<p>-------------------------------Evento Emergencia------------------------------</p>");
@@ -186,6 +190,22 @@
                             <input type=\"submit\" value=\"Adicionar\"/>
                         </p>
                     </form>";              
+        }
+        else if ($table == "listSocorroEmLocalN") {
+            return  "<form action=\"listSocorroNoLocal.php\">
+                        <p>Listar os meios de socorro acionados em processos de socorro originados em 
+                            <input type=\"text\" name=\"moradalocal\">\t
+                            <input type=\"submit\" value=\"Listar\"/>
+                        </p>
+                    </form>";
+        }
+        else if ($table == "listMeiosAcionadosNoProcessoN") {
+            return  "<form action=\"listMeiosAcionadosNoProcesso.php\">
+                        <p>Listar os Meios acionados no processo
+                        <input type=\"text\" name=\"numprocessosocorro\">\t
+                            <input type=\"submit\" value=\"Listar\"/>
+                        </p>
+                    </form>";
         }
     }
 ?>
