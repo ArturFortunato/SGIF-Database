@@ -10,7 +10,8 @@
 
     try{
     	$result = $db->prepare($sql);
-    	$result->execute([':moradalocal' => $_REQUEST['nome']]);
+        $result->execute([':moradalocal' => $_REQUEST['nome']]);
+        echo("<h1>Adicionado!!</h1>");
     }
     catch(Exception $e){
 		 echo("<h1>Something went wrong!!</h1>");

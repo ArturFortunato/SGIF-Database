@@ -47,10 +47,10 @@
             try {
                 $result = $db->prepare($sql);
                 $result->execute();
-                echo("<h1>Apagado</h1>");
+                echo("<h1>Apagado!!</h1>");
             }
             catch(Exception $e) {
-                echo("<h1>Existem dependencias, nao pode ser apagado</h1>");
+                echo("<h1>Existem dependencias, nao foi apagado!!</h1>");
             }
             $db = null;
         ?>

@@ -10,7 +10,8 @@
 
     try{
     	$result = $db->prepare($sql);
-    	$result->execute([':nummeio' => $_REQUEST['nummeio'], ':nomemeio' => $_REQUEST['nomemeio'], ':nomeentidade' => $_REQUEST['nomeentidade']]);
+        $result->execute([':nummeio' => $_REQUEST['nummeio'], ':nomemeio' => $_REQUEST['nomemeio'], ':nomeentidade' => $_REQUEST['nomeentidade']]);
+        echo("<h1>Adicionado!!</h1>");
     }
     catch(Exception $e){
     	echo("<h1>Something went wrong!!</h1>");

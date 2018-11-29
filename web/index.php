@@ -220,7 +220,7 @@
                         <p>Numero do processo de socorro: <input type=\"text\" name=\"numprocessosocorro\"></p>
                         <p>Numero do meio: <input type=\"text\" name=\"nummeio\"></p>
                         <p>Nome da entidade: <input type=\"text\" name=\"nomeentidade\"></p>
-                        <p><input type=\"submit\" value=\"Listar\"/></p>
+                        <p><input type=\"submit\" value=\"Associar\"/></p>
                         </p>
                     </form>";
         }
@@ -232,7 +232,7 @@
                         <p>Nome da pessoa: <input type=\"text\" name=\"pessoa\"></p>
                         <p>Local: <input type=\"text\" name=\"morada\"></p>
                         <p>Instante da chamada: <input type=\"text\" name=\"instantechamada\"></p>
-                        <p><input type=\"submit\" value=\"Listar\"/></p>
+                        <p><input type=\"submit\" value=\"Associar\"/></p>
                         </p>
                     </form>";
         }

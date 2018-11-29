@@ -8,7 +8,7 @@
                 $sql = "INSERT INTO aciona VALUES (" . $_REQUEST['nummeio'] . ", '" . $_REQUEST['nomeentidade'] . "', "  . $_REQUEST['numprocessosocorro'] . ");";
                 $result = $db->prepare($sql);
                 $result->execute();
-                echo("<h1>Complete!!</h1>");
+                echo("<h1>Adicionado!!</h1>");
             }
             catch (Exception $e) {
                 echo("<h1>Something went wrong!!</h1>");
