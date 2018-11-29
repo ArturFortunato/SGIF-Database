@@ -3,16 +3,19 @@
 <?php  
 
     include("config.php");
+
+    echo("<form action=\"index.php\"><input type=\"submit\" value=\"Voltar\"></form>");
     
     $sql = "INSERT INTO eventoemergencia VALUES (:numtelefone, :instantechamada, :nomepessoa, :moradalocal, :numprocessossocorro);";
 
-    $result = $db->prepare($sql);
-    $result->execute([':numtelefone' => $_REQUEST['numtelefone'], ':instantechamada' => $_REQUEST['instantechamada'], ':nomepessoa' => $_REQUEST['nomepessoa'], ':moradalocal' => $_REQUEST['moradalocal'], ':numprocessossocorro' => $_REQUEST['numprocessosocorro']]);
-
+    try{
+    	$result = $db->prepare($sql);
+    	$result->execute([':numtelefone' => $_REQUEST['numtelefone'], ':instantechamada' => $_REQUEST['instantechamada'], ':nomepessoa' => $_REQUEST['nomepessoa'], ':moradalocal' => $_REQUEST['moradalocal'], ':numprocessossocorro' => $_REQUEST['numprocessosocorro']]);
+    }
+    catch(Exception $e){
+    	echo("<h1>Something went wrong!!</h1>");
+    }
     $db = null;
-
-    header('Location: index.php');
-    die();
 ?>
 </body>
 </html>

@@ -16,7 +16,7 @@
         catch (Exception $e) {
             echo("<h1>Conflitos com outras entradas na tabela!</h1>");
         }
-
+        $db = null;
         ?>
     </body> 
 </html>
