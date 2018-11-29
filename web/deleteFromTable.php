@@ -3,7 +3,8 @@
         <?php
             include("config.php");
 
-            //echo("   ---   " . $_REQUEST['table']);
+            echo("<form action=\"index.php\"><input type=\"submit\" value=\"Voltar\"></form>");
+
             $sql = "DELETE FROM " . $_REQUEST['table'] . " WHERE ";
             $arraySplited = split("::", $_REQUEST['row']);
 
@@ -11,6 +12,7 @@
                 $mini_array = split("=", $arraySplited[0]);
                 $sql .= $mini_array[0] . "='" . $mini_array[1] . "';";
             }
+
             else if ($_REQUEST['table'] == 'eventoemergencia') {
                 for($i = 0; $i < 5; $i++) {
                     $mini_array = split("=", $arraySplited[$i]);
@@ -24,31 +26,33 @@
                 $sql .=  ";";
             }
             else if ($_REQUEST['table'] == 'processosocorro') {
-                //Tem dependentes, nao funciona, query certa
                 $sql .= $arraySplited[0] . ";";
             }
+
             else if ($_REQUEST['table'] == 'meio') {
-                //Tem dependentes, nao funciona, query certa
                 $sql .= $arraySplited[0] . " AND ";
                 $mini_array = split("=", $arraySplited[1]);
                 $sql .= $mini_array[0] . "='" . $mini_array[1] . "' AND ";
                 $mini_array = split("=", $arraySplited[2]);
                 $sql .= $mini_array[0] . "='" . $mini_array[1] . "';";
             }
+
             else if ($_REQUEST['table'] == 'entidademeio') {
-                //Tem dependentes, nao funciona, query certa
                 $mini_array = split("=", $arraySplited[0]);
                 $sql .= $mini_array[0] . "='" . $mini_array[1] . "';";
             }
 
-            echo($sql);
-            $result = $db->prepare($sql);
-            $result->execute();
+            //echo($sql);
 
+            try {
+                $result = $db->prepare($sql);
+                $result->execute();
+                echo("<h1>Apagado</h1>");
+            }
+            catch(Exception $e) {
+                echo("<h1>Existem dependencias, nao pode ser apagado</h1>");
+            }
             $db = null;
-
-            header('Location: index.php');
-            die();
         ?>
     </body>
 </html>
