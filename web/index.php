@@ -16,7 +16,9 @@
     echo("<p>------------------------------Meios acionados no processo N------------------------------</p>");  
     echo(getForm("listMeiosAcionadosNoProcessoN"));   
     echo("<p>------------------------------Associar processo de socorro a meios------------------------------</p>"); 
-    echo(getForm("associarProcSocorroAMeios"));   
+    echo(getForm("associarProcSocorroAMeios"));
+    echo("<p>------------------------------Associar processo de socorro a eventos de emergencia------------------------------</p>"); 
+    echo(getForm("associarProcSocorroAEventosEmergencia"));
     echo("<p>------------------------------Locais------------------------------</p>");
     printTable("locais", true, false);
     echo("<p>-------------------------------Evento Emergencia------------------------------</p>");
@@ -64,7 +66,7 @@
             
             echo("<td><a href=\"deleteFromTable.php?row={$ar}&table=$table\">Apagar</a></td>");
             if($show_edit) {
-                echo("<td><a href=\"editTableRow.php\">Editar</a></td>");
+                echo("<td><a href=\"updateMeioInterface.php?table=$table&nummeio={$row['nummeio']}&nomeentidade={$row['nomeentidade']}\">Editar</a></td>");
             }
             echo("</tr>");
         }
@@ -212,12 +214,24 @@
                         </p>
                     </form>";
         }
-        else if($table == "associarProcSocorroAMeios") {
+        else if ($table == "associarProcSocorroAMeios") {
             return  "<form action=\"assocProcessosSocorroAMeios.php\">
                         <p>Associar processo de socorro a meios</p>
                         <p>Numero do processo de socorro: <input type=\"text\" name=\"numprocessosocorro\"></p>
                         <p>Numero do meio: <input type=\"text\" name=\"nummeio\"></p>
                         <p>Nome da entidade: <input type=\"text\" name=\"nomeentidade\"></p>
+                        <p><input type=\"submit\" value=\"Listar\"/></p>
+                        </p>
+                    </form>";
+        }
+        else if ($table == "associarProcSocorroAEventosEmergencia") {
+            return  "<form action=\"assocProcessosSocorroAEventosEmergencia.php\">
+                        <p>Associar processo de socorro a meios</p>
+                        <p>Numero do processo de socorro: <input type=\"text\" name=\"numprocessosocorro\"></p>
+                        <p>Numero de telefone: <input type=\"text\" name=\"telefone\"></p>
+                        <p>Nome da pessoa: <input type=\"text\" name=\"pessoa\"></p>
+                        <p>Local: <input type=\"text\" name=\"morada\"></p>
+                        <p>Instante da chamada: <input type=\"text\" name=\"instantechamada\"></p>
                         <p><input type=\"submit\" value=\"Listar\"/></p>
                         </p>
                     </form>";
