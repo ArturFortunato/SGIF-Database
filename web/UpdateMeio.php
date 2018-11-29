@@ -14,7 +14,7 @@
             echo("<h1>Alteracao efetuada!</h1>");
         }
         catch (Exception $e) {
-            echo("<h1>$e</h1>");
+            echo("<h1>Conflitos com outras entradas na tabela!</h1>");
         }
 
         ?>
