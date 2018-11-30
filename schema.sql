@@ -89,6 +89,7 @@ create table EventoEmergencia
 	moradaLocal varchar(255) not null,
 	numProcessoSocorro int not null,
 	constraint pk_witness primary key(numTelefone, nomePessoa),
+	constraint pk_telefone primary key(numTelefone, instanteChamada),
 	constraint fk_local foreign key (moradaLocal) references Locais(moradaLocal),
 	constraint fk_numProcessoSocorro foreign key (numProcessoSocorro) references ProcessoSocorro(numProcessoSocorro)
 );

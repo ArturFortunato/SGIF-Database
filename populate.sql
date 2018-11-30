@@ -201,6 +201,7 @@ insert into Video values ('2013-05-12 14:19','2013-10-12 01:28',  15 );
 insert into Video values ('2016-05-05 23:26','2017-01-18 18:14',  74 );
 insert into Video values ('2002-11-11 00:49','2003-05-10 17:38',  85 );
 insert into Video values ('2013-03-15 18:05','2013-10-01 17:11',  35 );
+insert into Video values ('2018-08-15 19:00','2018-08-20 17:00', 9);
 
 --SegmentoVideo
 insert into SegmentoVideo values ( 0 , 3300, '2008-12-22 04:21', 93 );
@@ -703,6 +704,11 @@ insert into SegmentoVideo values ( 1 , 3137, '2013-03-15 18:05', 35 );
 insert into SegmentoVideo values ( 2 , 2579, '2013-03-15 18:05', 35 );
 insert into SegmentoVideo values ( 3 , 1234, '2013-03-15 18:05', 35 );
 insert into SegmentoVideo values ( 4 , 1905, '2013-03-15 18:05', 35 );
+insert into SegmentoVideo values( 0, 1500, '2018-08-15 19:00', 9);
+insert into SegmentoVideo values( 1, 44, '2018-08-15 19:00', 9);
+insert into SegmentoVideo values( 2, 75, '2018-08-15 19:00', 9);
+insert into SegmentoVideo values( 3, 59, '2018-08-15 19:00', 9);
+insert into SegmentoVideo values( 4, 1500, '2018-08-15 19:00', 9);
 
 --Local
 insert into Locais values ('Lagos');
@@ -1019,7 +1025,7 @@ insert into EventoEmergencia values ('964099982', '2013-10-04 14:22:55', 'Estani
 insert into EventoEmergencia values ('962130936', '2003-12-11 8:24:55', 'Durbalino Ulhoa', 'Alcoutim',  54 );
 insert into EventoEmergencia values ('961682456', '2004-02-10 0:49:15', 'Hermenegildo Rocadas', 'Fafe',  10 );
 insert into EventoEmergencia values ('969943642', '2000-04-28 5:40:43', 'Andrioleta Vidigal', 'Santa Marta de Penaguiao',  2 );
-insert into EventoEmergencia values ('967394860', '2014-08-20 6:9:32', 'Andrioleta Ulhoa', 'Lourinha',  47 );
+insert into EventoEmergencia values ('967394860', '2018-08-20 6:9:32', 'Andrioleta Ulhoa', 'Oliveira do Hospital',  47 );
 insert into EventoEmergencia values ('960325554', '2001-01-08 12:33:51', 'Zardilaque Chousa', 'Agueda',  59 );
 insert into EventoEmergencia values ('961652715', '2010-01-23 18:18:3', 'Capitulino Rocadas', 'Anadia',  52 );
 insert into EventoEmergencia values ('964545770', '2014-12-19 11:58:14', 'Andrioleta Torquato', 'Azambuja',  90 );
@@ -1488,6 +1494,8 @@ insert into Aciona values ( 17 , 'Bombeiros',  36 );
 insert into Aciona values ( 23 , 'Policia',  25 );
 insert into Aciona values ( 32 , 'Exercito',  6 );
 insert into Aciona values ( 18 , 'Bombeiros',  5 );
+insert into Aciona values (3, 'Policia', 47);
+
 
 --Coordenador
 insert into Coordenador values ( 0 );
